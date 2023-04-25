@@ -5,10 +5,11 @@ import Courses from './Courses';
 import { CircularProgress } from '@mui/material';
 
 const ViewCourses = () => {
-
 var i=0;
     const getAllCoursesFromServer=()=>{
-  axios.get(`${base_url}`).then(
+  axios.get(`${base_url}`, {
+    withCredentials: true
+  }).then(
     (response)=>{console.log(response.data);setCourse(response.data);setLoading(false)},
     (error)=>{console.log(error);}
   );

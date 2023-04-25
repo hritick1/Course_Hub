@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useSyncExternalStore } from 'react';
 import { useState } from 'react';
 import { json, useNavigate } from 'react-router-dom/dist';
-
+// chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 const Login = () => {
 const navigate=useNavigate();
 const [User, setUser] = useState([]);
@@ -12,15 +12,22 @@ const handleForm=(e)=>{
   e.preventDefault();
   console.log(User);
 login(User);
+
+// navigate('/viewCourses')
+setUser1();
 // console.log(token);
 // getCurrentUser();
 // findUser();
  }
 
  const login=(data)=>{
-  axios.post('http://localhost:3002/login',data).
-  then((respose)=>{setToken(respose.data);console.log(token)},(err)=>{console.log(err)});
-
+ 
+  axios.post('https://jwt-auth-t0qc.onrender.com/login',data).
+  then((response)=>{console.log(response);});
+   console.log(document.cookie);
+ }
+ const setUser1=()=>{
+   
  }
 
 

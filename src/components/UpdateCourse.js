@@ -18,13 +18,13 @@ const UpdateCourse = () => {
 
        axios.get(`${base_url}/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
        setCourse(Course);
-        },[Course]);
+        },[]);
        
    
        const handleForm=(e)=>{
         e.preventDefault();
         postDataToServer(Course);
-        navigate(`/viewCourses`);
+        navigate(`/`);
        }
 
 

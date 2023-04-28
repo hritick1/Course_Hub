@@ -17,8 +17,8 @@ function App() {
       <Router>
       <Nav/>
       <Routes>
-        <Route exact path="/" element={<Login/>}/>
-        <Route exact path="/viewCourses" element={<ViewCourses/>}/>
+        <Route exact path="/login" element={<Login/>}/>
+        <Route exact path="/" element={<ViewCourses/>}/>
         <Route exact path="/signUp" element={<Signup/>}/>
         <Route exact path="/addCourse" element={<AddCourses/>}/>
         <Route exact path="/updateCourse/:id" element={<UpdateCourse />}/>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import base_url from './Apis';
 const Signup = () => {
 
   const handleChange=(e)=>{
@@ -18,7 +19,7 @@ const Signup = () => {
     
    }
    const postDataToServer=(data)=>{
-    axios.post('https://jwt-auth-t0qc.onrender.com/register',data).then((response)=>{console.log(response);toast.success("Signup Successfull!"); setTimeout(()=>{navigate('/')},3000);},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
+    axios.post(`${base_url}/register`,data).then((response)=>{console.log(response);toast.success("Signup Successfull!"); setTimeout(()=>{navigate('/')},3000);},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
    }
    const navigate=useNavigate();
   

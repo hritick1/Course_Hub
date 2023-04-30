@@ -1,36 +1,35 @@
 import axios from 'axios';
-import React, { useEffect, useSyncExternalStore } from 'react';
 import { useState } from 'react';
-import { json, useNavigate } from 'react-router-dom/dist';
+import { useNavigate } from 'react-router-dom/dist';
 import { ToastContainer, toast } from 'react-toastify';
+import base_url from './Apis';
 // chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 const Login = () => {
 const navigate=useNavigate();
 const [User, setUser] = useState([]);
-const [token, setToken] = useState("");
 
 
 
-const handleForm=(e)=>{
+
+const handleForm=async(e)=>{
   e.preventDefault();
   console.log(User);
-login(User);
-
-// navigate('/viewCourses')
-setUser1();
-// console.log(token);
-// getCurrentUser();
-// findUser();
+let tok=await login(User);
+axios.defaults.headers.common['Authorization']='Bearer '+tok;
+console.log(tok);navigate('/viewCourses');
+// setTimeout(()=>{},3000);
  }
 
- const login=(data)=>{
+ const login=async(data)=>{
+ var tok="a";
+ await axios.post(`${base_url}/login`,data,{
+    withCredentials: true
+  }).then((response)=>{console.log(response);toast.success("Login Successfull");tok=response.data.accessToken;},(err)=>{toast.error(err.response.data)});
+
+  
+ return tok;
+ }
  
-  axios.post('https://jwt-auth-t0qc.onrender.com/login',data).
-  then((response)=>{console.log(response);toast.success("Login Successfull");setTimeout(()=>{navigate('/viewCourses')},4000)},(err)=>{toast.error(err.response.data)});
- }
- const setUser1=()=>{
-   
- }
 
 
  const handleChange=(e)=>{

@@ -1,12 +1,15 @@
 import axios from 'axios';
-import React, { useSyncExternalStore } from 'react';
+import React, { useEffect, useSyncExternalStore } from 'react';
 import { useState } from 'react';
 import { json, useNavigate } from 'react-router-dom/dist';
+import { ToastContainer, toast } from 'react-toastify';
 // chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 const Login = () => {
 const navigate=useNavigate();
 const [User, setUser] = useState([]);
 const [token, setToken] = useState("");
+
+
 
 const handleForm=(e)=>{
   e.preventDefault();
@@ -23,8 +26,7 @@ setUser1();
  const login=(data)=>{
  
   axios.post('https://jwt-auth-t0qc.onrender.com/login',data).
-  then((response)=>{console.log(response);});
-   console.log(document.cookie);
+  then((response)=>{console.log(response);toast.success("Login Successfull");setTimeout(()=>{navigate('/viewCourses')},4000)},(err)=>{toast.error(err.response.data)});
  }
  const setUser1=()=>{
    
@@ -40,7 +42,7 @@ setUser1();
 navigate(`/signUp`);
        }
 
-    return <div>
+    return <div>  <ToastContainer/>
         <div className="container-fluid position-relative" style={{backgroundColor:"#4E6C50",height:"90vh"}} >
         <div className="card position-absolute top-50 start-50 translate-middle align-items-center w-50 h-auto" style={{backgroundColor:"#FAECD6"}}>
   <div className="card-body ">

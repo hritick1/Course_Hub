@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 const Signup = () => {
 
   const handleChange=(e)=>{
@@ -13,15 +14,17 @@ const Signup = () => {
     e.preventDefault();
     console.log(User);
     postDataToServer(User);
+
+    
    }
    const postDataToServer=(data)=>{
-    axios.post('https://jwt-auth-t0qc.onrender.com/register',data).then((respose)=>{console.log(respose)},(err)=>{console.log(err)});
+    axios.post('https://jwt-auth-t0qc.onrender.com/register',data).then((response)=>{console.log(response);toast.success("Signup Successfull!"); setTimeout(()=>{navigate('/')},3000);},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
    }
    const navigate=useNavigate();
   
 
 
-    return <div>
+    return <div>  <ToastContainer/>
         <div className="container-fluid position-relative" style={{backgroundColor:"#4E6C50",height:"90vh"}}>
         <div className="card position-absolute top-50 start-50 translate-middle align-items-center w-50 h-auto " style={{backgroundColor:"#FAECD6"}}>
   <div className="card-body ">

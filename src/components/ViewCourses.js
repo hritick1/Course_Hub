@@ -30,7 +30,7 @@ var i=0;
         color='inherit'
         size={150}
         thickness={1}/>}
-      {  !loading && Course.length>0?Course?.map((item) =>{return(
+      {  !loading && Course!=null?Course?.map((item) =>{return(
       <div className="col-md-4">
         <Courses key={item._id} title={"Course "+(++i)} id={item._id} updateData={updateData}subject={item.title} description={item.description}/></div>)}):<h4 style={{backgroundColor:"#FAECD6"}}>{!loading && ("No-Courses-Available")}</h4>
        }

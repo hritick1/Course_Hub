@@ -16,7 +16,7 @@ const UpdateCourse = () => {
         document.title="Update Courses";
         // console.log(id);
 
-       axios.get(`${base_url}/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
+       axios.get(`/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
        setCourse(Course);
         },[Course]);
        

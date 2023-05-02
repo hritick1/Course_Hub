@@ -16,15 +16,17 @@ const handleForm=async(e)=>{
   console.log(User);
 let tok=await login(User);
 axios.defaults.headers.common['Authorization']='Bearer '+tok;
-console.log(tok);navigate('/viewCourses');
+// console.log(tok);
+navigate('/viewCourses');
 // setTimeout(()=>{},3000);
  }
 
  const login=async(data)=>{
  var tok="a";
- await axios.post(`${base_url}/login`,data,{
+ await axios.post(`/login`,data,{
     withCredentials: true
-  }).then((response)=>{console.log(response);toast.success("Login Successfull");tok=response.data.accessToken;},(err)=>{toast.error(err.response.data)});
+  }).then((response)=>{toast.success("Login Successfull");tok=response.data.accessToken;},
+  (err)=>{toast.error(err.response.data)});
 
   
  return tok;

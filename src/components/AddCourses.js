@@ -26,7 +26,7 @@ setCourse({title:"",description:""});
 
 
        const postDataToServer=(data)=>{
-          axios.post(`${base_url}/courses`,data).then(
+          axios.post(`/courses`,data).then(
             (response)=>{
          console.log(response);
          toast.success("Course added sucessfully");

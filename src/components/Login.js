@@ -25,7 +25,8 @@ navigate('/viewCourses');
  var tok="a";
  await axios.post(`/login`,data,{
     withCredentials: true
-  }).then((response)=>{toast.success("Login Successfull");tok=response.data.accessToken;},
+  }).then((response)=>{
+    if (response.status === 200 || response.status === 201) { toast.success("Login Successfull");tok=response.data.accessToken;}},
   (err)=>{toast.error(err.response.data)});
 
   

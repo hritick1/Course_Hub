@@ -18,8 +18,15 @@ const Signup = () => {
 
     
    }
+
    const postDataToServer=(data)=>{
-    axios.post(`/register`,data).then((response)=>{console.log(response);toast.success("Signup Successfull!"); setTimeout(()=>{navigate('/')},3000);},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
+    axios.post(`/register`,data).then((response)=>{console.log(response);
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Signup Successful!");
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+      }},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
    }
    const navigate=useNavigate();
   

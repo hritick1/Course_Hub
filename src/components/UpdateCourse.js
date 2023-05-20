@@ -16,7 +16,7 @@ const UpdateCourse = () => {
         document.title="Update Courses";
         // console.log(id);
  const getData=async()=>{
-  await axios.get(`/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
+  await axios.get(`/courses/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
  }
        const setData=async()=>{
         await getData();

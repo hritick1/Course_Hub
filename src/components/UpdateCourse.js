@@ -15,14 +15,9 @@ const UpdateCourse = () => {
     useEffect(() => {
         document.title="Update Courses";
         // console.log(id);
- const getData=async()=>{
-  await axios.get(`/courses/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
- }
-       const setData=async()=>{
-        await getData();
-        setCourse(Course);
-       }
-       setData();
+
+       axios.get(`/courses/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
+       setCourse(Course);
         },[Course]);
        
    
@@ -35,7 +30,7 @@ const UpdateCourse = () => {
 
 
        const postDataToServer=(data)=>{
-          axios.put(`${base_url}/${id}`,data).then(
+          axios.put(`/courses/${id}`,data).then(
             (response)=>{
          console.log(response);
      

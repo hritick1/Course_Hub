@@ -15,9 +15,14 @@ const UpdateCourse = () => {
     useEffect(() => {
         document.title="Update Courses";
         // console.log(id);
-
-       axios.get(`/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
-       setCourse(Course);
+ const getData=async()=>{
+  await axios.get(`/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
+ }
+       const setData=async()=>{
+        await getData();
+        setCourse(Course);
+       }
+       setData();
         },[Course]);
        
    

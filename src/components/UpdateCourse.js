@@ -18,7 +18,7 @@ const UpdateCourse = () => {
 
        axios.get(`/courses/${id}`).then((response)=>{console.log(response);setCourse(response.data);setLoading(false)},()=>{});
        setCourse(Course);
-        },[]);
+        },[id]);
        
    
        const handleForm=(e)=>{

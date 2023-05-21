@@ -17,20 +17,32 @@ const handleForm=async(e)=>{
 let tok=await login(User);
 axios.defaults.headers.common['Authorization']='Bearer '+tok;
 // console.log(tok);
-navigate('/viewCourses');
-// setTimeout(()=>{},3000);
+setTimeout(()=>{
+  navigate('/viewCourses');},3000);
  }
 
  const login=async(data)=>{
  var tok="a";
- await axios.post(`/login`,data,{
-    withCredentials: true
-  }).then((response)=>{
+ await axios.post(`http://localhost:4000/login`,data).then((response)=>{
     if (response.status === 200 || response.status === 201) { toast.success("Login Successfull");tok=response.data.accessToken;}},
   (err)=>{toast.error(err.response.data)});
 
   
  return tok;
+ }
+
+ const login1=async(data)=>{
+  const response=await fetch("https://course-app.onrender.com/login",{
+    method:"post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(data)
+  });
+  const res=await response.json();
+  res.headers.set('Authorization',"Bearer "+res.accessToken);
+  console.log(res.accessToken);
  }
  
 

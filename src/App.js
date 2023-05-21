@@ -9,15 +9,20 @@ import AddCourses from './components/AddCourses';
 import UpdateCourse from './components/UpdateCourse';
 import Admin from './components/Admin';
 import { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
-
+  const [isLogin, setisLogin] = useState(false);
+  const handleLogout=()=>{
+     axios.get("/logout").then((response)=>{toast.success("Logout Successfull");setisLogin(false); axios.defaults.headers.common['Authorization']=null;console.log(response)},(err)=>{toast.error("Error");});
+  }
   return (
-    <div >
+    <div ><ToastContainer/>
       <Router>
-      <Nav/>
+      <Nav isLogin={isLogin} handleLogout={handleLogout}/>
       <Routes>
-        <Route exact path="/" element={<Login/>}/>
+        <Route exact path="/" element={<Login setisLogin={setisLogin} isLogin={isLogin}/>}/>
         <Route exact path="/viewCourses" element={<ViewCourses/>}/>
         <Route exact path="/signUp" element={<Signup/>}/>
         <Route exact path="/addCourse" element={<AddCourses/>}/>

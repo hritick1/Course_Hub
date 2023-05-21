@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Nav = () => {
+const Nav = ({isLogin,handleLogout}) => {
     return <div><nav className="navbar navbar-dark navbar-expand-lg  "style={{backgroundColor:"#820000"}}>
     <div className="container-fluid">
       <a className="navbar-brand" to="#">CourseApp</a>
@@ -9,15 +9,24 @@ const Nav = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li className="nav-item">
+          {isLogin && <li className="nav-item">
             <Link className="nav-link" aria-current="page" to="/viewCourses">ViewCourses</Link>
-          </li>
-          <li className="nav-item">
+          </li>}
+          {!isLogin && <li className="nav-item">
+            <Link className="nav-link" aria-current="page" to="/">ViewCourses</Link>
+          </li>}
+          {isLogin && <li className="nav-item">
             <Link className="nav-link" to="/addCourse">AddCourses</Link>
-          </li>
-          <li className="nav-item fixed-right">
+          </li>}
+         {!isLogin &&  <li className="nav-item">
+            <Link className="nav-link" to="/">AddCourses</Link>
+          </li>}
+          {!isLogin && <li className="nav-item fixed-right">
             <Link className="nav-link" to="/">Login/SignUp</Link>
-          </li>
+          </li>}
+          {isLogin && <li className="nav-item fixed-right">
+            <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link>
+          </li>}
         </ul>
       </div>
     </div>

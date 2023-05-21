@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom/dist';
 import { ToastContainer, toast } from 'react-toastify';
 import base_url from './Apis';
 // chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
-const Login = () => {
+const Login = ({setisLogin}) => {
 const navigate=useNavigate();
 const [User, setUser] = useState([]);
 
@@ -23,7 +23,8 @@ setTimeout(()=>{
  const login=(data)=>{
  axios.post(`/login`,data).then((response)=>{
     toast.success("Login Successfull");
-    axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;},
+    axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
+  setisLogin(true)},
   (err)=>{toast.error(err.response.data)});
  }
 

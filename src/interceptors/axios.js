@@ -8,7 +8,7 @@ axios.interceptors.response.use(res=>res,async err=>{
         if(response.status==200){
             console.log(response);
             axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
-
+                    
             return axios(err.config);
         }
     }

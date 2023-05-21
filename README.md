@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+Course Hub
+Course Hub is a web application that provides a platform for users to add, update, delete, and view courses. 
+It also includes authentication functionality for user login and logout using JWT (JSON Web Tokens).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deployment
+The project is deployed and accessible at: https://course-app-hritick1.vercel.app/
 
-## Available Scripts
+Features
+Course Management: Users can perform CRUD (Create, Read, Update, Delete) operations on courses, allowing them to add new courses, view existing courses, update course details, and delete unwanted courses.
+User Authentication: The application includes user authentication using JWT, allowing users to securely log in and log out of their accounts.
+Responsive Design: The user interface is designed to be responsive and compatible with various devices and screen sizes.
 
-In the project directory, you can run:
+Technologies Used
+HTML: Used for the structure and layout of the web pages.
+CSS: Applied for styling and visual enhancements.
+JavaScript: Implemented the functionality and interactions of the web application.
+React: A JavaScript library for building user interfaces, utilized for creating reusable UI components and managing state.
+Node.js: A JavaScript runtime used for the server-side implementation.
+Express.js: A web application framework for Node.js, used for creating RESTful APIs.
+MongoDB: A NoSQL database used for storing and managing the course data.
+JWT (JSON Web Tokens): Used for user authentication and session management.
 
-### `npm start`
+Installation and Setup
+Clone the repository:
+git clone https://github.com/hritick1/Course_Hub.git
+Navigate to the project directory:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+cd course-hub
+Install the dependencies for both the server and client:
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open your web browser and visit http://localhost:3000 to access the Course Hub application.
 
-### `npm test`
+Contributing
+Contributions to Course Hub are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Acknowledgments
+The Course Hub project was inspired by the need for a user-friendly course management system.
+Special thanks to the open-source community for their contributions and resources that facilitated the development of this project.

@@ -15,7 +15,7 @@ const navigate=useNavigate();
   const deleteCourse =(id)=>{
     var course="";
     axios.get(`/courses/${id}`).then((response)=>{console.log(response.data);course=response.data.title},()=>{});
-    axios.delete(`/courses/${id}`).then((response)=>{console.log("delete Sucessfull");{props.updateData(course)}},(error)=>{console.log("Error in deleting")});
+    axios.delete(`/courses/${id}`).then((response)=>{console.log("delete Sucessfull");toast.success("Delete Successfull");{props.updateData(course)}},(error)=>{console.log("Error in deleting")});
 }
     return <div>
         <ToastContainer/>

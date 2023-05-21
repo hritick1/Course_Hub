@@ -14,21 +14,17 @@ const [User, setUser] = useState([]);
 const handleForm=async(e)=>{
   e.preventDefault();
   console.log(User);
-let tok=await login(User);
-axios.defaults.headers.common['Authorization']='Bearer '+tok;
+login(User);
 // console.log(tok);
 setTimeout(()=>{
-  navigate('/viewCourses');},3000);
+  navigate('/viewCourses')},3000);
  }
 
- const login=async(data)=>{
- var tok="a";
- await axios.post(`http://localhost:4000/login`,data).then((response)=>{
-    if (response.status === 200 || response.status === 201) { toast.success("Login Successfull");tok=response.data.accessToken;}},
+ const login=(data)=>{
+ axios.post(`/login`,data).then((response)=>{
+    toast.success("Login Successfull");
+    axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;},
   (err)=>{toast.error(err.response.data)});
-
-  
- return tok;
  }
 
  const login1=async(data)=>{

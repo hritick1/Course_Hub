@@ -37,7 +37,7 @@ const UpdateCourse = () => {
          toast.success("Course Updated sucessfully");
             },
             (error)=>{
-
+                
             }
           )
        }

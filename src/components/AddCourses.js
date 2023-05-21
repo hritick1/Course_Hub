@@ -32,7 +32,7 @@ setCourse({title:"",description:""});
          toast.success("Course added sucessfully");
             },
             (error)=>{
-
+        toast.error(error.response.data);
             }
           )
        }

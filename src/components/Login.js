@@ -13,13 +13,14 @@ const handleForm=async(e)=>{
   console.log(User);
 login(User);
 // console.log(tok);
-setTimeout(()=>{
-  navigate('/viewCourses')},3000);
+
  }
 
  const login=(data)=>{
  axios.post(`/login`,data).then((response)=>{
     toast.success("Login Successfull");
+    setTimeout(()=>{
+      navigate('/viewCourses')},3000);
     axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
   setisLogin(true); sessionStorage.setItem("isLoggedIn", "true");},
   (err)=>{toast.error(err.response.data)});

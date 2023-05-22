@@ -8,9 +8,6 @@ const Login = ({setisLogin}) => {
 const navigate=useNavigate();
 const [User, setUser] = useState([]);
 
-
-
-
 const handleForm=async(e)=>{
   e.preventDefault();
   console.log(User);
@@ -24,7 +21,7 @@ setTimeout(()=>{
  axios.post(`/login`,data).then((response)=>{
     toast.success("Login Successfull");
     axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
-  setisLogin(true)},
+  setisLogin(true); sessionStorage.setItem("isLoggedIn", "true");},
   (err)=>{toast.error(err.response.data)});
  }
 

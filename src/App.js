@@ -13,9 +13,9 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
-  const [isLogin, setisLogin] = useState(false);
+  const [isLogin, setisLogin] = useState(sessionStorage.getItem("isLoggedIn") === "true");
   const handleLogout=()=>{
-     axios.get("/logout").then((response)=>{toast.success("Logout Successfull");setisLogin(false); axios.defaults.headers.common['Authorization']=null;console.log(response)},(err)=>{toast.error("Error");});
+     axios.get("/logout").then((response)=>{toast.success("Logout Successfull");setisLogin(false); axios.defaults.headers.common['Authorization']=null; sessionStorage.setItem("isLoggedIn", "false");;console.log(response)},(err)=>{toast.error("Error");});
   }
   return (
     <div ><ToastContainer/>

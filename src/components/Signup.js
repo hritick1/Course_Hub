@@ -21,12 +21,15 @@ const Signup = () => {
 
    const postDataToServer=(data)=>{
     axios.post(`/register`,data).then((response)=>{console.log(response);
-      if (response.status === 200 || response.status === 201) {
-        toast.success("Signup Successful!");
-        setTimeout(() => {
-          navigate('/');
-        }, 3000);
-      }},(err)=>{console.log(err.response.data);toast.error(err.response.data)});
+      if(response.code==="ERR_BAD_REQUEST") {
+        toast.error(response.response.data);
+      }
+    else{
+      toast.success("Signup Successful!");
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }});
    }
    const navigate=useNavigate();
   

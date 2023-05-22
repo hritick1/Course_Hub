@@ -15,30 +15,25 @@ login(User);
 // console.log(tok);
 
  }
+ const doAfterLogin=(response)=>{
+  setTimeout(()=>{
+    toast.success("Login Successfull");
+    navigate('/viewCourses')},3000);
+  axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
+setisLogin(true); sessionStorage.setItem("isLoggedIn", "true");
+ }
 
  const login=(data)=>{
  axios.post(`/login`,data).then((response)=>{
-    toast.success("Login Successfull");
-    setTimeout(()=>{
-      navigate('/viewCourses')},3000);
-    axios.defaults.headers.common['Authorization']='Bearer '+response.data.accessToken;
-  setisLogin(true); sessionStorage.setItem("isLoggedIn", "true");},
-  (err)=>{toast.error(err.response.data)});
- }
+  if(response.code==="ERR_BAD_REQUEST"){
+    toast.error(response.response.data);
+  }
+  else{
+    doAfterLogin(response);
+  }
+}
+)}
 
- const login1=async(data)=>{
-  const response=await fetch("https://course-app.onrender.com/login",{
-    method:"post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(data)
-  });
-  const res=await response.json();
-  res.headers.set('Authorization',"Bearer "+res.accessToken);
-  console.log(res.accessToken);
- }
  
 
 
